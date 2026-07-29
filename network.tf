@@ -13,7 +13,9 @@ resource "azurerm_subnet" "internal" {
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${var.prefix}-nic"
+  for_each = toset(local.nic_names)
+
+  name                = "${var.prefix}-${each.value}"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
