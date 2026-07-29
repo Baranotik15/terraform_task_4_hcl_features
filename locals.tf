@@ -3,6 +3,14 @@ locals {
 }
 
 locals {
+  vm_environments = ["prod", "staging"]
+}
+
+locals {
+  vm_owners = ["baranotik15", "topalruslan"]
+}
+
+locals {
   security_rules = [
     {
       name                       = "SSH"

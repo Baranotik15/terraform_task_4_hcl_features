@@ -28,7 +28,8 @@ resource "azurerm_virtual_machine" "main" {
     disable_password_authentication = false
   }
   tags = {
-    environment = "staging"
+    environment = local.vm_environments[count.index]
+    owner       = local.vm_owners[count.index]
   }
   lifecycle {
     prevent_destroy = true
